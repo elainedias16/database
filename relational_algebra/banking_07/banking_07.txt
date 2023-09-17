@@ -1,0 +1,11 @@
+-- First way
+t1 = σ customer_street LIKE '%t' ∨ customer_city LIKE 'S%' customer
+t2 = π customer_name t1
+t2
+
+-- Second way
+
+t1 = σ customer_street LIKE '%t' customer
+t2 = σ customer_city LIKE 'S%' customer
+t3 = π customer_name (t1 ∪ t2) 
+t3

@@ -1,0 +1,6 @@
+-- Escreva uma consulta que retorna o número dos empré stimos (loan_number) em que a quantia tomada (amount)
+-- está entre 750 e 1300 (extremos incluídos).
+
+t1 = σ (amount ≥ 750 ∧ amount ≤ 1300) loan
+t2 = π loan_number t1
+t2

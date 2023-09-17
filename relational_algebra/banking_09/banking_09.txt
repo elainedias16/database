@@ -1,0 +1,3 @@
+t1 = σ customer_street LIKE '%y%' ∨ customer_name LIKE '%y' customer
+t2 = π customer_name t1
+t2 

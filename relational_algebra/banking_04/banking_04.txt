@@ -1,0 +1,3 @@
+t1 = σ (amount < 750 ∨ amount > 1300) loan
+t2 = π loan_number t1
+t2

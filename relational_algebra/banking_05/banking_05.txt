@@ -1,0 +1,6 @@
+-- Escreva uma consulta que retorna o nome das agências (branch_name) nas quais os recursos (assets) está entre
+-- 1000000 e 7000000 (extremos incluídos).
+
+t1 = σ (assets ≥ 1000000 ∧ assets ≤ 7000000) branch
+t2 = π branch_name t1
+t2

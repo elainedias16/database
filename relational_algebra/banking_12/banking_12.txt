@@ -1,0 +1,10 @@
+-- First way
+t1 = σ branch_name LIKE '%n' ∧ branch_city LIKE '%i%' branch
+t2 = π branch_name t1
+t2
+
+-- Second way
+t1 = σ branch_name LIKE '%n' branch
+t2 = σ branch_city LIKE '%i%' branch
+t3 = π branch_name (t1 ∩ t2) 
+t3
