@@ -1,0 +1,9 @@
+-- Escreva uma consulta que retorna o número das contas (account_number) nas quais o saldo (balance) é menor
+-- que o saldo de alguma conta da agência cujo nome (branch_name) é “North Town”. O resultado não deve conter
+-- ocorrências duplicadas
+
+t1 = σ branch_name LIKE 'North Town' account
+menorValor = γ min(account.balance) → menorValor (t1)
+t2 = account ⨯ menorValor
+t3 = σ account.balance < menorValor t2
+π account_number t3

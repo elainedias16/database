@@ -1,0 +1,5 @@
+t1 = σ branch_city LIKE 'Brooklyn' (branch)
+menor_valor = γ min(branch.assets) → menorValor (t1)
+t2 = branch ⨯ menor_valor
+t3 = σ branch.assets	> menorValor (t2)
+π branch.branch_name (t3)

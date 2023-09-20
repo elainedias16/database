@@ -1,0 +1,4 @@
+t1 = (account ⨝ depositor ⨝ loan ⨝ borrower) ⨝ branch
+t2 = σ customer_name LIKE 'Hayes' t1
+t3 = π branch_name,branch_city t2
+t3
