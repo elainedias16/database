@@ -1,0 +1,8 @@
+-- Escreva uma consulta que retorna uma única coluna contendo o nome dos clientes (customer_name) que moram em
+-- ruas com nomes (customer_street) iguais mas em cidades com nomes (customer_city) diferentes. O
+-- resultado não deve conter ocorrências duplicadas.customer
+t1 = ρ customer2 customer
+t2 = customer ⨯ t1
+t3 = σ (customer.customer_street = customer2.customer_street ∧ customer.customer_city ≠ customer2.customer_city) t2
+t4 = π customer.customer_name t3
+t4

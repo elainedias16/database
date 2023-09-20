@@ -3,7 +3,7 @@
 -- resultado não deve conter ocorrências duplicadas.
 
 t1 = σ branch_name LIKE 'Downtown' loan
-menorValor = γ min(loan.amount) → menorValor t1
-t2 = loan ⨯ menorValor
-t3 = σ loan.amount ≤ menorValor t2
+maiorValor = γ max(loan.amount) → maiorValor t1
+t2 = loan ⨯ maiorValor
+t3 = σ loan.amount ≤ maiorValor t2
 π loan_number t3
