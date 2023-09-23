@@ -1,0 +1,5 @@
+t1 = π nationality(drivers)
+t2 = constructors ⨝ t1
+t3 = constructors - t2
+t4 = π nationality t3
+t4

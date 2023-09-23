@@ -1,0 +1,14 @@
+-- Escreva uma consulta para obter o(s) nome(s) da(s) equipe(s) (coluna name da tabela constructors) que nunca
+-- atingiram pelo menos o terceiro lugar em uma corrida (tabela results)
+
+-- Linhas de construtos, etc que nunca atingiram pelo menos o terceiro lugar
+t1 = σ positionOrder > 3 results
+
+-- Ids das equipes que nunc atingiram o terceiro lugar
+t2 = π constructorId t1
+
+-- Juntando as tableas para obter o nome dessas equipes
+t3 = t2 ⨝ constructors
+
+-- Projetando o nome dessas equipes
+π name t3

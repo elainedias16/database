@@ -1,0 +1,17 @@
+-- Escreva uma consulta para obter o(s) nome(s) completo(s) do(s) piloto(s) (colunas forename e surname da tabela
+-- drivers separadas por um ' ') que não participaram de nenhuma corrida (tabela races).
+
+-- Ids de pilotos que ja participaram de corridas
+t1 = π driverId results
+
+-- Ids de pilos que nao participaram de nenhuma corrida
+t2 = (π driverId drivers) - (π driverId t1)
+
+-- Juntando com a tabela drivers para obter o nome
+t3 = t2 ⨝ drivers
+
+-- Forename e surname
+t4 = π forename,surname t3 
+
+t5 = π concat(forename, ' ',  surname) → Piloto (drivers)
+t5

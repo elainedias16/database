@@ -1,0 +1,9 @@
+-- Escreva uma consulta para obter o(s) nome(s) do(s) grande(s) prêmio(s) (coluna name da tabela gps) que ainda não
+-- aconteceram (ou seja, ainda não foram realizadas corridas – tabela races).
+
+-- Id dos premios que ainda nao tiveram corrida
+t1 = (π gpId gps) - (π gpId races) 
+-- Join para ter o nome desses premios
+t2 = t1 ⨝ gps
+-- Capturando o nome desses premios
+π name t2

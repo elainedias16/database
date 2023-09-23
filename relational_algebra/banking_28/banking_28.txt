@@ -1,0 +1,14 @@
+-- Escreva uma consulta que retorna uma única coluna contendo o nome dos clientes (customer_name) que possuem
+-- empréstimo em mais de uma agência. O resultado não deve conter ocorrências duplicadas.
+
+-- Conta o número de agências distintas para cada cliente
+t1 = π customer_name, branch_name (borrower ⨝ loan)
+
+-- Agrupa por customer_name e conta o número de agências distintas
+t2 = γ customer_name; count(branch_name) → numeroDeBranches (t1)
+
+-- Clientes com mais de uma agência
+ClientesMaisDeUmaAgencia = σ numeroDeBranches > 1 (t2)
+
+ -- Projeção de customer_name
+π customer_name ClientesMaisDeUmaAgencia

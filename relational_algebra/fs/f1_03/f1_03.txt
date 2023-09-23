@@ -1,0 +1,11 @@
+-- Escreva uma consulta para obter o(s) nome(s) do(s) circuito(s) (coluna name da tabela circuits) nos quais não
+-- foram realizadas corridas (tabela races).
+
+-- ID de Circuitos com corridas
+t1 = circuits ⨝ races
+
+-- ID Circuitos que nao tiveram corrida
+t2 = (π circuits.circuitId circuits) - (π circuits.circuitId t1)
+
+t3 = circuits ⨝ t2
+π name t3
