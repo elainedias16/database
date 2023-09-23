@@ -1,0 +1,10 @@
+-- Escreva uma consulta que retorna o nome dos clientes (customer_name) que possuem conta em agências em que o
+-- cliente chamado “Hayes” possui conta. O resultado não deve conter ocorrências duplicadas.
+
+t1 = account ⨝ depositor ⨝ customer
+t2 = σ customer_name = 'Hayes' t1
+t3 = ρ hayes t2
+t4 = π branch_name t3
+t5 = t1 ⨯ t4
+t6 = σ account.branch_name = hayes.branch_name AND depositor.customer_name ≠ 'Hayes' t5
+π customer_name t6

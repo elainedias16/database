@@ -1,0 +1,21 @@
+-- Escreva uma consulta que retorna o nome dos clientes (customer_name) que possuem empréstimo em agências em
+-- que o cliente chamado “Hayes” possui conta. O resultado não deve conter ocorrências duplicadas.
+
+-- Contas que Hayes possui 
+t1 = σ customer_name = 'Hayes' depositor
+
+-- Agencias onde Hayes possui conta
+t2 = t1 ⨝ account
+
+-- Projetando as agencias de Hayes
+t3 = π 	account.branch_name t2
+-- Renomeando a tabela 
+t4 = ρ Hayes t3
+--  Juntando a tabela de tomar de emprestimo com loan com a coluna que tem as agencias de Hayes
+t5 = (borrower ⨝ loan) ⨯ t4
+
+-- Selecionando as agencias que sao iguais as agencias de Hayes
+t6 = σ loan.branch_name = Hayes.branch_name ∧ customer_name ≠ 'Hayes' t5
+
+-- Projetando customer_name dessas agencias
+π customer_name t6

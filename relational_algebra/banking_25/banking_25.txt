@@ -1,0 +1,14 @@
+
+-- ######################################################
+-- Escreva uma consulta que retorna o nome dos clientes (customer_name) que possuem empré stimo em agências em
+-- que o cliente chamado “Hayes” possui empré stimo. O resultado não deve conter ocorrências duplicadas
+
+-- Agencias que Hayes possui emprestimo
+t1 = σ customer_name = 'Hayes' borrower
+t2 = t1 ⨝ loan
+t3 = π loan.branch_name t2
+t4 = ρ Hayes t3
+-- Juntando tabela de tomaradore de emprestimo com loan com a coluna que tem as branch_name de Hayes
+t5 = (loan ⨝ borrower) ⨯ t4
+t6 = σ loan.branch_name = Hayes.branch_name ∧ customer_name ≠ 'Hayes' t5
+π customer_name t6
