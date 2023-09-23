@@ -1,0 +1,13 @@
+-- Escreva uma consulta que retorna o nome dos clientes (customer_name) que possuem conta em agências em que o
+-- cliente chamado “Smith” possui empré stimo. O resultado não deve conter ocorrências duplicadas.
+
+-- Agencias que Smith possui emprestimo
+t1 = σ customer_name = 'Smith' borrower
+t2 = t1 ⨝ loan
+t3 = π loan.branch_name t2
+t4 = ρ Smith t3
+
+-- Juntando tabela de depositor com account com a tabela que tem a coluna com as branch_name que Smith possui emprestimo
+t5 = (depositor ⨝ account) ⨯ t4
+t6 = σ account.branch_name = Smith.branch_name AND depositor.customer_name ≠ 'Smith' t5
+π customer_name t6
