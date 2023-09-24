@@ -1,0 +1,45 @@
+-- Races primeiro lugar
+t1 = σ positionOrder = 1 results
+
+-- Equipes de nacionalidade francesa
+t2 = σ nationality = 'French' constructors
+
+t3 = t1 ⨝ t2
+
+
+
+-- #####################################
+-- Nome Equipe
+nomeEquipe = π name t3
+
+-- Nome Piloto
+driverId = π driverId t3
+t4 = driverId ⨝ drivers
+-- nomeDrivers =  π concat(forename, ' ',  surname) → Piloto (t4)
+
+-- Ano da corrrida
+t5 = t3 ⨝ races
+anoDaCorrida = π year t5
+
+-- Renomeando constructosName de t5
+t6 = ρ name → constructosName t3
+
+-- Nome do Circuito
+t7 = (t6 ⨝ races) ⨝ circuits
+nomeCircuito = π name t7
+-- #####################################
+
+
+-- rename
+t8 = ρ name → constructosName t3
+t9 = (t8 ⨝ races) ⨝ circuits
+
+
+-- rename 
+t10 = ρ nationality → constructosNationality t9
+t11 = t10 ⨝ drivers
+
+-- nomeDrivers =  π concat(forename, ' ',  surname) → Piloto (t11)
+
+t12 = π constructosName, year, circuits.name,concat(forename, ' ',  surname) → Piloto      t11
+t12
