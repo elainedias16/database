@@ -1,0 +1,26 @@
+-- Escreva uma consulta para obter o(s) nome(s) completo(s) do(s) piloto(s) (colunas forename e surname da tabela
+-- drivers separadas por um ' ') que já participaram de todas as corridas (tabela races) ocorridas em um circuito,
+-- seguido do nome do circuito (coluna name da tabela circuits). As colunas da tabela de saída devem ter os nomes
+-- "Piloto" e "Circuito", respectivamente
+
+-- π raceId results
+
+-- Agrupa por customer_name e conta o número de agências distintas
+-- qtd = COUNT(raceId, races)
+-- qtd
+-- t1 = γ driverId; count(raceId) → numeroDeCorridasPorPiloto (results)
+
+-- Numero de corridas
+-- qtd = γ count(races.raceId) → qtd (races)
+-- t2 = t1 ⨯ qtd
+
+-- pilotosTodasCorridas = σ numeroDeCorridasPorPiloto = qtd t2
+
+
+
+-- Todas as corridas feitas em um circuito
+-- π raceId, circuitId races
+t1 = γ circuitId; count(raceId) → numeroDeCorridasPorCircuito (races)
+t1
+
+t2 =  γ driverId,circuitId; 
